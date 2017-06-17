@@ -1,0 +1,694 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dapplo.Windows.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Dapplo.Windows.Common.Enums.AdjacentTo">
+            <summary>
+            Where is the rectangle Adjacent to?
+            </summary>
+        </member>
+        <member name="F:Dapplo.Windows.Common.Enums.AdjacentTo.None">
+            <summary>
+            It's not connected
+            </summary>
+        </member>
+        <member name="F:Dapplo.Windows.Common.Enums.AdjacentTo.Left">
+            <summary>
+            It's connected on the left side.
+            </summary>
+        </member>
+        <member name="F:Dapplo.Windows.Common.Enums.AdjacentTo.Right">
+            <summary>
+            It's connected on the right side.
+            </summary>
+        </member>
+        <member name="F:Dapplo.Windows.Common.Enums.AdjacentTo.Top">
+            <summary>
+            It's connected on the top side.
+            </summary>
+        </member>
+        <member name="F:Dapplo.Windows.Common.Enums.AdjacentTo.Bottom">
+            <summary>
+            It's connected on the bottom side.
+            </summary>
+        </member>
+        <member name="T:Dapplo.Windows.Common.Enums.HResult">
+            <summary>
+                The HRESULT represents Windows error codes
+                See <a href="https://en.wikipedia.org/wiki/HRESULT">wikipedia</a>
+            </summary>
+        </member>
+        <member name="T:Dapplo.Windows.Common.Enums.Win32Error">
+            <summary>
+                A Win32 error code.
+            </summary>
+        </member>
+        <member name="T:Dapplo.Windows.Common.Extensions.HResultExtensions">
+            <summary>
+                Extensions to handle the HResult
+            </summary>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Extensions.HResultExtensions.Failed(Dapplo.Windows.Common.Enums.HResult)">
+            <summary>
+                Test if the HResult respresents a fail
+            </summary>
+            <param name="hResult">HResult</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Extensions.HResultExtensions.Succeeded(Dapplo.Windows.Common.Enums.HResult)">
+            <summary>
+                Test if the HResult respresents a success
+            </summary>
+            <param name="hResult">HResult</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Extensions.HResultExtensions.ThrowOnFailure(Dapplo.Windows.Common.Enums.HResult)">
+            <summary>
+                Throw an exception on Failure
+            </summary>
+            <param name="hResult">HResult</param>
+        </member>
+        <member name="T:Dapplo.Windows.Common.Extensions.RectExensions">
+            <summary>
+                Helper method for the RECT struct
+            </summary>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Extensions.RectExensions.Contains(Dapplo.Windows.Common.Structs.RECT,Dapplo.Windows.Common.Structs.POINT)">
+            <summary>
+                Test if this RECT contains the specified POINT
+            </summary>
+            <param name="rect"></param>
+            <param name="point">POINT</param>
+            <returns>true if it contains</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Extensions.RectExensions.Contains(Dapplo.Windows.Common.Structs.RECT,Dapplo.Windows.Common.Structs.RECT)">
+            <summary>
+                True if small rectangle is entirely contained within the larger rectangle
+            </summary>
+            <param name="largerRectangle">The larger rectangle</param>
+            <param name="smallerRectangle">The smaller rectangle</param>
+            <returns>True if small rectangle is entirely contained within the larger rectangle, false otherwise</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Extensions.RectExensions.HasOverlap(Dapplo.Windows.Common.Structs.RECT,Dapplo.Windows.Common.Structs.RECT)">
+            <summary>
+                Check that two rectangles overlap with each other
+            </summary>
+            <param name="rect1">The first rectangle</param>
+            <param name="rect2">The second rectangle</param>
+            <returns>The rectangles overlap</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Extensions.RectExensions.IsAdjacent(Dapplo.Windows.Common.Structs.RECT,Dapplo.Windows.Common.Structs.RECT)">
+            <summary>
+                True if either rectangle is adjacent to the other rectangle
+            </summary>
+            <param name="rect1">The first rectangle</param>
+            <param name="rect2">The second rectangle</param>
+            <returns>At least one rectangle is adjacent to the other rectangle</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Extensions.RectExensions.IsBetween(System.Int32,System.Int32,System.Int32)">
+            <summary>
+                Simple helper to specify if value is inside min and max
+            </summary>
+            <param name="value">double to check</param>
+            <param name="min">lowest allowed value</param>
+            <param name="max">highest allowed value</param>
+            <returns>bool true if the value is between</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Extensions.RectExensions.IsDockedToLeftOf(Dapplo.Windows.Common.Structs.RECT,Dapplo.Windows.Common.Structs.RECT)">
+            <summary>
+                Test if a RECT is docked to the left of another RECT
+            </summary>
+            <param name="rect1">RECT to test if it's docked</param>
+            <param name="rect2">RECT rect to be docked to</param>
+            <returns>bool with true if they are docked</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Extensions.RectExensions.IsDockedToRightOf(Dapplo.Windows.Common.Structs.RECT,Dapplo.Windows.Common.Structs.RECT)">
+            <summary>
+                Test if a RECT is docked to the right of another RECT
+            </summary>
+            <param name="rect1">RECT to test if it's docked</param>
+            <param name="rect2">RECT rect to be docked to</param>
+            <returns>bool with true if they are docked</returns>
+        </member>
+        <member name="T:Dapplo.Windows.Common.Structs.POINT">
+            <summary>
+                POINT structure for calling native methods
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.POINT.X">
+            <summary>
+                The X coordinate
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.POINT.Y">
+            <summary>
+                The Y coordinate
+            </summary>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.POINT.#ctor(System.Int32,System.Int32)">
+            <summary>
+                Constructor with x and y coordinates
+            </summary>
+            <param name="x">int</param>
+            <param name="y">int</param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.POINT.op_Implicit(Dapplo.Windows.Common.Structs.POINT)~System.Windows.Point">
+            <summary>
+                Implicit cast from POINT to Point
+            </summary>
+            <param name="point">POINT</param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.POINT.op_Implicit(Dapplo.Windows.Common.Structs.POINT)~System.Drawing.Point">
+            <summary>
+                Implicit cast from POINT to System.Drawing.Point
+            </summary>
+            <param name="point">POINT</param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.POINT.op_Implicit(System.Windows.Point)~Dapplo.Windows.Common.Structs.POINT">
+            <summary>
+                Implicit cast from Point to POINT
+            </summary>
+            <param name="point">Point</param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.POINT.op_Implicit(System.Drawing.Point)~Dapplo.Windows.Common.Structs.POINT">
+            <summary>
+                Implicit cast from System.Drawing.Point to POINT
+            </summary>
+            <param name="point">System.Drawing.Point</param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.POINT.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Dapplo.Windows.Common.Structs.RECT">
+            <summary>
+                See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd162897.aspx">RECT struct</a>
+            </summary>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+                Constructor from left, right, top, bottom
+            </summary>
+            <param name="left">int</param>
+            <param name="top">int</param>
+            <param name="right">int</param>
+            <param name="bottom">int</param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.#ctor(Dapplo.Windows.Common.Structs.POINT,Dapplo.Windows.Common.Structs.SIZE)">
+            <summary>
+                Constructor from location and size
+            </summary>
+            <param name="location">POINT</param>
+            <param name="size">SIZE</param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.#ctor(System.Int32,System.Int32,Dapplo.Windows.Common.Structs.SIZE)">
+            <summary>
+                Constructor from left, right and size
+            </summary>
+            <param name="left">int</param>
+            <param name="top">int</param>
+            <param name="size">SIZE</param>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.X">
+            <summary>
+                X value
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.Y">
+            <summary>
+                X location of the rectangle
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.Left">
+            <summary>
+                Left value of the rectangle
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.Top">
+            <summary>
+                Top of the rectangle
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.Right">
+            <summary>
+                Right of the rectangle
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.Bottom">
+            <summary>
+                Bottom of the rectangle
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.Height">
+            <summary>
+                Heigh of the RECT
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.Width">
+            <summary>
+                Width of the RECT
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.Location">
+            <summary>
+                Location (for this RECT
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.Size">
+            <summary>
+                Size for this RECT
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.BottomLeft">
+            <summary>
+                Coordinates of the bottom left
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.TopLeft">
+            <summary>
+                Coordinates of the top left
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.BottomRight">
+            <summary>
+                Coordinates of the bottom right
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.TopRight">
+            <summary>
+                Coordinates of the top right
+            </summary>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.op_Implicit(Dapplo.Windows.Common.Structs.RECT)~System.Windows.Rect">
+            <summary>
+                Cast RECT to Rect
+            </summary>
+            <param name="rectangle">RECT</param>
+            <returns>Rect</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.op_Implicit(System.Windows.Rect)~Dapplo.Windows.Common.Structs.RECT">
+            <summary>
+                Cast Rect to RECT
+            </summary>
+            <param name="rectangle">Rect</param>
+            <returns>RECT</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.op_Implicit(Dapplo.Windows.Common.Structs.RECT)~System.Drawing.Rectangle">
+            <summary>
+                Cast RECT to Rectangle
+            </summary>
+            <param name="rectangle">RECT</param>
+            <returns>Rectangle</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.op_Implicit(System.Drawing.Rectangle)~Dapplo.Windows.Common.Structs.RECT">
+            <summary>
+                Cast Rectangle to RECT
+            </summary>
+            <param name="rectangle"></param>
+            <returns>RECT</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.op_Equality(Dapplo.Windows.Common.Structs.RECT,Dapplo.Windows.Common.Structs.RECT)">
+            <summary>
+                Equals for RECT
+            </summary>
+            <param name="rectangle1">RECT</param>
+            <param name="rectangle2">RECT</param>
+            <returns>bool true if they are equal</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.op_Inequality(Dapplo.Windows.Common.Structs.RECT,Dapplo.Windows.Common.Structs.RECT)">
+            <summary>
+                Not is operator
+            </summary>
+            <param name="rectangle1"></param>
+            <param name="rectangle2"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.Equals(Dapplo.Windows.Common.Structs.RECT)">
+            <summary>
+                Equalss
+            </summary>
+            <param name="rectangle"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.IsEmpty">
+            <summary>
+                Checks if this RECT is empty
+            </summary>
+            <returns>true when empty</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECT.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.Empty">
+            <summary>
+                Empty RECT
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECT.SizeOf">
+            <summary>
+                SizeOf for this struct
+            </summary>
+        </member>
+        <member name="T:Dapplo.Windows.Common.Structs.RECTF">
+            <summary>
+                See <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms534497(v=vs.85).aspx">RectF class</a>
+            </summary>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+                Constructor from x,y,width,height
+            </summary>
+            <param name="x">int</param>
+            <param name="y">int</param>
+            <param name="width">int</param>
+            <param name="height">int</param>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.X">
+            <summary>
+                X value
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.Y">
+            <summary>
+                X location of the rectangle
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.Left">
+            <summary>
+                Left value of the rectangle
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.Top">
+            <summary>
+                Top of the rectangle
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.Right">
+            <summary>
+                Right of the rectangle
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.Bottom">
+            <summary>
+                Bottom of the rectangle
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.Height">
+            <summary>
+                Heigh of the RECT
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.Width">
+            <summary>
+                Width of the RECT
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.Location">
+            <summary>
+                Location for this RECT
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.Size">
+            <summary>
+                Size for this RECT
+            </summary>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.op_Implicit(Dapplo.Windows.Common.Structs.RECTF)~System.Windows.Rect">
+            <summary>
+                Cast RECTF to Rect
+            </summary>
+            <param name="rectangle">RECT</param>
+            <returns>Rect</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.op_Implicit(System.Windows.Rect)~Dapplo.Windows.Common.Structs.RECTF">
+            <summary>
+                Cast Rect to RECTF
+            </summary>
+            <param name="rectangle">Rect</param>
+            <returns>RECTF</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.op_Implicit(Dapplo.Windows.Common.Structs.RECTF)~System.Drawing.RectangleF">
+            <summary>
+                Cast RECTF to RectangleF
+            </summary>
+            <param name="rectangle">RECT</param>
+            <returns>Rectangle</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.op_Implicit(Dapplo.Windows.Common.Structs.RECTF)~System.Drawing.Rectangle">
+            <summary>
+                Cast RECTF to Rectangle
+            </summary>
+            <param name="rectangle">RECT</param>
+            <returns>Rectangle</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.op_Implicit(System.Drawing.RectangleF)~Dapplo.Windows.Common.Structs.RECTF">
+            <summary>
+                Cast RectangleF to RECTF
+            </summary>
+            <param name="rectangle">RectangleF</param>
+            <returns>RECTF</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.op_Implicit(System.Drawing.Rectangle)~Dapplo.Windows.Common.Structs.RECTF">
+            <summary>
+                Cast Rectangle to RECTF
+            </summary>
+            <param name="rectangle">Rectangle</param>
+            <returns>RECTF</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.op_Equality(Dapplo.Windows.Common.Structs.RECTF,Dapplo.Windows.Common.Structs.RECTF)">
+            <summary>
+                Equals for RECTF
+            </summary>
+            <param name="rectangle1">RECTF</param>
+            <param name="rectangle2">RECTF</param>
+            <returns>bool true if they are equal</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.op_Inequality(Dapplo.Windows.Common.Structs.RECTF,Dapplo.Windows.Common.Structs.RECTF)">
+            <summary>
+                Not is operator
+            </summary>
+            <param name="rectangle1">RECTF</param>
+            <param name="rectangle2">RECTF</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.Equals(Dapplo.Windows.Common.Structs.RECTF)">
+            <summary>
+                Equalss
+            </summary>
+            <param name="rectangle"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.IsEmpty">
+            <summary>
+                Checks if this RECT is empty
+            </summary>
+            <returns>true when empty</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.RECTF.Contains(Dapplo.Windows.Common.Structs.POINT)">
+            <summary>
+                Test if this RECT contains the specified POINT
+            </summary>
+            <param name="point">POINT</param>
+            <returns>true if it contains</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.RECTF.Empty">
+            <summary>
+                Empty RECT
+            </summary>
+        </member>
+        <member name="T:Dapplo.Windows.Common.Structs.SIZE">
+            <summary>
+                This structure should be used everywhere where native methods need a size struct.
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.SIZE.Width">
+            <summary>
+                The Width of the size struct
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.SIZE.Height">
+            <summary>
+                The Width of the size struct
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.SIZE.Empty">
+            <summary>
+                Returns an empty size
+            </summary>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.SIZE.#ctor(System.Windows.Size)">
+            <summary>
+                Constructor from S.W.Size
+            </summary>
+            <param name="size"></param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.SIZE.#ctor(System.Drawing.Size)">
+            <summary>
+                Constructor from S.D.Size
+            </summary>
+            <param name="size"></param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.SIZE.#ctor(System.Int32,System.Int32)">
+            <summary>
+                Size contructor
+            </summary>
+            <param name="width">int</param>
+            <param name="height">int</param>
+        </member>
+        <member name="P:Dapplo.Windows.Common.Structs.SIZE.IsEmpty">
+            <summary>
+                Checks if the width * height are 0
+            </summary>
+            <returns>true if the size is empty</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.SIZE.op_Implicit(Dapplo.Windows.Common.Structs.SIZE)~System.Windows.Size">
+            <summary>
+                Implicit cast from SIZE to Size
+            </summary>
+            <param name="size">SIZE</param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.SIZE.op_Implicit(System.Windows.Size)~Dapplo.Windows.Common.Structs.SIZE">
+            <summary>
+                Implicit cast from Size to SIZE
+            </summary>
+            <param name="size">Size</param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.SIZE.op_Implicit(Dapplo.Windows.Common.Structs.SIZE)~System.Drawing.Size">
+            <summary>
+                Implicit cast from SIZE to System.Drawing.Size
+            </summary>
+            <param name="size">SIZE</param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.SIZE.op_Implicit(System.Drawing.Size)~Dapplo.Windows.Common.Structs.SIZE">
+            <summary>
+                Implicit cast from System.Drawing.Size to SIZE
+            </summary>
+            <param name="size">System.Drawing.Size</param>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Structs.SIZE.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Dapplo.Windows.Common.Win32">
+            <summary>
+            Helper class for Win32 errors
+            </summary>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Win32.GetHResult(Dapplo.Windows.Common.Enums.Win32Error)">
+            <summary>
+                Get the error code from the Win32Error
+            </summary>
+            <param name="errorCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Win32.GetLastErrorCode">
+            <summary>
+                Get the last Win32 error as an exception
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Win32.GetMessage(Dapplo.Windows.Common.Enums.Win32Error,System.UInt32)">
+            <summary>
+                Get the message for a Win32 error
+            </summary>
+            <param name="errorCode">Win32Error</param>
+            <param name="languageId">
+                uint with language ID, see
+                <a href="https://msdn.microsoft.com/en-us/library/dd318693.aspx">here</a>
+            </param>
+            <returns>string with the message</returns>
+        </member>
+        <member name="M:Dapplo.Windows.Common.Win32.SetLastError(System.UInt32)">
+            <summary>
+                Change the last error
+            </summary>
+            <param name="dwErrCode">error code to change to</param>
+        </member>
+        <member name="T:Dapplo.Windows.Common.WindowsVersion">
+            <summary>
+                Extension methods to test the windows version
+            </summary>
+        </member>
+        <member name="P:Dapplo.Windows.Common.WindowsVersion.IsWindows10">
+            <summary>
+                Test if the current OS is Windows 10
+            </summary>
+            <returns>true if we are running on Windows 10</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.WindowsVersion.IsWindows10OrLater">
+            <summary>
+                Test if the current OS is Windows 10 or later
+            </summary>
+            <returns>true if we are running on Windows 10 or later</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.WindowsVersion.IsWindows7OrLater">
+            <summary>
+                Test if the current OS is Windows 7 or later
+            </summary>
+            <returns>true if we are running on Windows 7 or later</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.WindowsVersion.IsWindows8">
+            <summary>
+                Test if the current OS is Windows 8.0
+            </summary>
+            <returns>true if we are running on Windows 8.0</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.WindowsVersion.IsWindows81">
+            <summary>
+                Test if the current OS is Windows 8(.1)
+            </summary>
+            <returns>true if we are running on Windows 8(.1)</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.WindowsVersion.IsWindows81OrLater">
+            <summary>
+                Test if the current OS is Windows 8.1 or later
+            </summary>
+            <returns>true if we are running on Windows 8.1 or later</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.WindowsVersion.IsWindows8OrLater">
+            <summary>
+                Test if the current OS is Windows 8 or later
+            </summary>
+            <returns>true if we are running on Windows 8 or later</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.WindowsVersion.IsWindowsVista">
+            <summary>
+                Test if the current OS is Windows Vista
+            </summary>
+            <returns>true if we are running on Windows Vista or later</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.WindowsVersion.IsWindowsVistaOrLater">
+            <summary>
+                Test if the current OS is Windows Vista or later
+            </summary>
+            <returns>true if we are running on Windows Vista or later</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.WindowsVersion.IsWindowsXp">
+            <summary>
+                Test if the current OS is Windows XP
+            </summary>
+            <returns>true if we are running on Windows XP or later</returns>
+        </member>
+        <member name="P:Dapplo.Windows.Common.WindowsVersion.IsWindowsXpOrLater">
+            <summary>
+                Test if the current OS is Windows XP or later
+            </summary>
+            <returns>true if we are running on Windows XP or later</returns>
+        </member>
+    </members>
+</doc>
